@@ -3,7 +3,7 @@
     <div class="logo col-3">
       <a href="{{ .Site.BaseURL }}"><img alt="{{ .Site.Params.logo.alt }}" src="{{ .Site.Params.logo.standard | relURL }}" /></a>
     </div>
-    <div class="logo-mobile">
+    <div class="logo-mobile col-3">
       <a href="{{ .Site.BaseURL }}"><img alt="{{ .Site.Params.logo.alt }}" src="{{ .Site.Params.logo.mobile | relURL }}" /></a>
     </div>
     {{ partial "main-menu.html" . }}
