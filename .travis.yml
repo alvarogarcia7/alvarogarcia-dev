@@ -1,0 +1,31 @@
+# go is not actually required for the build process
+language: minimal
+
+env:
+  - HUGO_VERSION=0.54.0
+
+# install hugo before the build is run; download the public
+# release, untar, and copy it to a known location
+before_install:
+  - mkdir -p bin
+  - curl -L https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz -o bin/hugo.tar.gz
+  - tar xzvvf bin/hugo.tar.gz -C ./bin
+
+
+# on build attempt to generate the site
+script:
+  - "./bin/hugo"
+  - "ls -lah public"
+
+deploy:
+  local_dir: public # Default static site output dir for Hugo
+  repo: alvarogarcia7/alvarogarcia-dev # This is the slug of the repo you want to deploy your site to
+  target_branch: gh-pages # GitHub pages branch to deploy to (in other cases it can be gh-pages)
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # This is the authentication which you will setup in the next step in travis-ci dashboard
+  name: "Alvaro Garcia"
+  email: "alvarogarcia7@users.noreply.github.com"
+  on:
+    branch: master
+

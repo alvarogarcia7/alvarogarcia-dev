@@ -1,4 +1,4 @@
-baseURL = "www.example.com"
+baseURL = "https://alvarogarcia.dev"
 languageCode = "en-us"
 title = "Software Crafting: Delivery, Training, Consulting, Coaching"
 themesDir = "themes/"
